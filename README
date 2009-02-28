@@ -1,0 +1,41 @@
+
+= todo.py Overview = 
+
+todo-py or todo.py is a todo.txt manager written in python.  There are currently two versions: todo.py and todo_dev.py.  Both are modifications of code written by Shane Koster.  The dev version is a dead end and is only here for posterity.  It has preliminary support for task dependencies - but this work has been continued in the jobdone project.
+
+For instructions on usage please type todo.py -h
+
+To install:
+
+  * copy the todo.py file to somewhere in your path (eg. ~/bin or /usr/bin).
+  * ensure that the file has execute permission (chmod 755 todo.py).  
+  * setup a directory to hold your todo.txt, done.txt etc. files 
+      (default is ~/todo)
+  * edit the todo.py file if you use a location other than ~/todo
+  * todo.py does not require a .todo file in your home directory.
+
+  * Optional
+  * To create a shortcut to todo.py add a line to your .bashrc file - or other appropriate shell startup file.  For bash:
+
+    alias t='/path/to/todo.py'
+    alias j='/path/to/todo.py --todo-dir /home/user/todo/otherproject'
+
+
+= Settings =
+
+Local preferences can be changed either in the command line, sometimes using environment variables or in the todo.py directly.  Common preferences are listed at the top of the todo.py file with descriptions of their actions.
+
+
+
+
+
+
+Files in this directory:
+
+changelog.txt
+readme.txt
+setup.py
+todo.py
+todo.pyc
+todo_cron.py
+todo_dev.py
