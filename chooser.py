@@ -10,6 +10,7 @@ __license__ = "GPL"
 import sys
 import os
 import subprocess
+import tempfile
 import getopt
 import openanything
 
@@ -30,16 +31,16 @@ def getFile(filepath):
 def parseFile(file):
     """ Process the text and return todo items that can be written to the todo.txt data file """
     # Create a tempfile and write our data into it
-    tempfile = "/tmp/todotemp.txt"
-    thandle = open(tempfile, 'w')
+    tfile = tempfile.mkstemp()[1]
+    thandle = open(tfile, 'w')
     thandle.write(file['data'])
     thandle.close()
 
     # Open our tempfile and edit it
-    edit = subprocess.call([editor, tempfile])
+    edit = subprocess.call([editor, tfile])
 
     # Read the tempfile back in as todos
-    thandle = open(tempfile, 'r')
+    thandle = open(tfile, 'r')
     todos = thandle.read()
     thandle.close()
     return todos
