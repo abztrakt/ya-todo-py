@@ -50,13 +50,14 @@ def parseFile(file):
 
     return todos
 
-def writeTodos():
+def writeTodos(todos):
     """ Write out the todo items into the todo.txt storage """
-    pass
+    print todos
 
 def main(filepath):
     file = getFile(filepath)
-    print parseFile(file)
+    todos = parseFile(file)
+    writeTodos(todos)
 
 if __name__ == "__main__":
     filepath = sys.argv[1]
