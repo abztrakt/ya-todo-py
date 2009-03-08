@@ -8,11 +8,19 @@ __author__  = "Craig M. Stimmel"
 __license__ = "GPL"
 
 import sys
+import os
 import subprocess
 import getopt
 import openanything
 
-EDITOR = "vim"
+# Figure out what editor to use, if not that, default to vi
+try:
+    if(os.environ['TODO_EDITOR']):
+        editor = os.environ['TODO_EDITOR']
+    else:
+        editor = os.environ['EDITOR']
+except:
+    editor = 'vi'
 
 def getFile(filepath):
     """ Use openanything to open a file or url and return a dictionary of info about it """
@@ -28,7 +36,7 @@ def parseFile(file):
     thandle.close()
 
     # Open our tempfile and edit it
-    edit = subprocess.call([EDITOR, tempfile])
+    edit = subprocess.call([editor, tempfile])
 
     # Read the tempfile back in as todos
     thandle = open(tempfile, 'r')
