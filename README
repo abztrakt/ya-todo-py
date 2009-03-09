@@ -26,16 +26,12 @@ To install:
 Local preferences can be changed either in the command line, sometimes using environment variables or in the todo.py directly.  Common preferences are listed at the top of the todo.py file with descriptions of their actions.
 
 
-
-
-
-
 Files in this directory:
 
-changelog.txt
-readme.txt
+chooser.py
+openanything.py
+README
 setup.py
+timeline.py
 todo.py
-todo.pyc
 todo_cron.py
-todo_dev.py
