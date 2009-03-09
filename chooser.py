@@ -62,8 +62,9 @@ def parseFile(file):
 
 def writeTodos(todos):
     """ Write out the todo items into the todo.txt storage """
-    print todos
-    print todo_dir
+    fhandle = open(todo_dir+'todo.txt', 'a')
+    fhandle.write(todos)
+    fhandle.close()
 
 def main(filepath):
     file = getFile(filepath)
