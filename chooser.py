@@ -13,6 +13,16 @@ import subprocess
 import tempfile
 import getopt
 import openanything
+import todo
+
+# Where are our todos stored?
+if todo.TODO_DIR:
+    todo_dir = todo.TODO_DIR
+else:
+    try:
+        todo_dir = "%s/todo/" % os.environ['HOME']
+    except:
+        print "Your todo directory cannot be found!"
 
 # Figure out what editor to use, if not that, default to vi
 try:
@@ -53,6 +63,7 @@ def parseFile(file):
 def writeTodos(todos):
     """ Write out the todo items into the todo.txt storage """
     print todos
+    print todo_dir
 
 def main(filepath):
     file = getFile(filepath)
