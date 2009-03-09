@@ -55,7 +55,7 @@ def parseFile(file):
     thandle.close()
 
     # Clean up the tempfile, since mkstemp doesn't do that for us.
-    cleanup = subprocess.Popen("rm" + tfile, shell=True)
+    cleanup = subprocess.Popen("rm " + tfile, shell=True)
     sts = os.waitpid(cleanup.pid, 0)
 
     return todos
