@@ -33,9 +33,9 @@ try:
 except:
     editor = 'vi'
 
-def getFile(filepath):
+def getFile(source):
     """ Use openanything to open a file or url and return a dictionary of info about it """
-    file = openanything.fetch(filepath)
+    file = openanything.fetch(source)
     return file
 
 def parseFile(file):
@@ -66,11 +66,11 @@ def writeTodos(todos):
     fhandle.write(todos)
     fhandle.close()
 
-def main(filepath):
-    file = getFile(filepath)
+def main(source):
+    file = getFile(source)
     todos = parseFile(file)
     writeTodos(todos)
 
 if __name__ == "__main__":
-    filepath = sys.argv[1]
-    main(filepath)
+    source = sys.argv[1]
+    main(source)
