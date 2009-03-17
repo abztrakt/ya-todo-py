@@ -47,7 +47,7 @@ def parseFile(file):
     thandle.close()
 
     # Open our tempfile and edit it
-    edit = subprocess.call([editor, tfile])
+    subprocess.call([editor, tfile])
 
     # Read the tempfile back in as todos
     thandle = open(tfile, 'r')
@@ -67,10 +67,17 @@ def writeTodos(todos):
     fhandle.close()
 
 def main(source):
-    file = getFile(source)
-    todos = parseFile(file)
+    todos = parseFile(source)
     writeTodos(todos)
 
 if __name__ == "__main__":
-    source = sys.argv[1]
+    try:
+        source = sys.argv[1]
+        source = getFile(source)
+    except IndexError:
+        source = sys.stdin.read()
+        source = {'data':source,} # Turn this into a dictionary with a "data" key just so it matches what openanything.py returns
+
     main(source)
+    reset = subprocess.Popen("reset", shell=True)
+    rsts = os.waitpid(reset.pid, 0)
