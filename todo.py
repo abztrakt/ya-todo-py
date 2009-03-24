@@ -50,7 +50,7 @@ sortIgnoreCase = True
 # This default is used for ls action which can use alphaSort
 numericSort = False
 # This reverses the sort
-sortReverse = True
+sortReverse = False
 
 # Set your preferences, how entering priorities should be handled.
 # singleLetterPriority = False means, you enter a priority of a
@@ -272,6 +272,7 @@ def help(longmessage = False):
     -V, --version  : prints version number
     -h, --help     : print help
     -n             : sort items by number not alphabeticaly
+    -r             : reverse the sort order
     -t, --theme    : color theme ANSI: light|dark|nocolor, Win: windark
     --todo-dir     : Specifiy full path to directory containing todo.txt etc
     -i             : Make sort case sensitive
@@ -330,6 +331,7 @@ Options:
  -V,  --version : Print version number
  -n             : sort items by number not alphabeticaly
  -i             : Make sort case sensitive
+ -r             : Reverse the sort
  -a             : Display text from TODO and DONE
  --todo-dir     : Specifiy full path to directory containing todo.txt etc
  --help         : Full help
@@ -1054,7 +1056,7 @@ if __name__ == "__main__":
 
 
     try:
-        opts, args = getopt.getopt(sys.argv[1:], 'fhpqvVint:d:', \
+        opts, args = getopt.getopt(sys.argv[1:], 'fhpqvVinrt:d:', \
                 ['nc', 'help', 'version','theme=','todo-dir=', 'type='])
     except (getopt.GetoptError), why:
         print "Sorry - option not recognized.  Try -h for help"
@@ -1082,6 +1084,8 @@ if __name__ == "__main__":
             numericSort = True
         if o == '-i':
             sortIgnoreCase = False
+        if o == '-r':
+            sortReverse = True
         if o == '-d':
             """For backwards compatibility with todo.sh"""
         if o == '--todo-dir':
