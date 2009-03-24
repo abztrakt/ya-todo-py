@@ -49,6 +49,8 @@ waitEditor = True
 sortIgnoreCase = True
 # This default is used for ls action which can use alphaSort
 numericSort = False
+# This reverses the sort
+sortReverse = True
 
 # Set your preferences, how entering priorities should be handled.
 # singleLetterPriority = False means, you enter a priority of a
@@ -644,6 +646,10 @@ def list(patterns=None, escape=True, \
     #items.sort() # sort by todo.txt order
     if (not numericSort):
         items.sort(alphaSort) # sort by tasks alphbetically
+
+    #items.reverse() # reverse the sort
+    if sortReverse:
+        items.reverse()
 
     re_pri = re.compile(r".*(\([A-Z]\)).*")
     re_late = re.compile(r"(.*)\{due: (....)-(..)-(..)\}(.*)")
